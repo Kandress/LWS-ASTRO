@@ -11,11 +11,45 @@ import "../styles/global.css";
                 <Image src={Logo} alt="Logo White LWS" />
             </a>
         </li>
-        <li><a href="#home">Inicio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#soluciones">Soluciones</a></li>
-        <li><a href="#precios">Precios</a></li>
-        <li><a href="#seguridad">Seguridad</a></li>
+        <li><a href="#home" class="links-nav">Inicio</a></li>
+        <li><a href="#servicios" class="links-nav">Servicios</a></li>
+        <li><a href="#soluciones" class="links-nav">Soluciones</a></li>
+        <li><a href="#precios" class="links-nav">Precios</a></li>
+        <li><a href="#seguridad" class="links-nav">Seguridad</a></li>
         <li><a href="#login" class="login-btn">Iniciar sesión</a></li>
+        <li><ion-icon name="bag-outline"></ion-icon></li>
+        <div class="dropdown">
+        <li><ion-icon name="person-outline"></ion-icon></li>
+        <div class="dropdown-content">
+          <a href="#">Perfil</a>
+          <a href="#">Opciones</a>
+          <a href="#">Cerrar sesión <ion-icon name="log-out-outline"></ion-icon></a>
+        </div>
+      </div>
     </ul>
 </nav>
+
+<script>
+    // Puedes agregar aquí cualquier funcionalidad adicional para la barra de navegación si es necesario  
+    document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.querySelector('.navbar') as HTMLElement;
+    if (!navbar) return; // seguridad extra por si no existe
+
+    let lastScrolly = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrolly = window.scrollY;
+
+      if (currentScrolly > lastScrolly) {
+        // bajando
+        navbar.style.transform = 'translateY(-100%)';
+      } else {
+        // subiendo
+        navbar.style.transform = 'translateY(0)';
+      }
+
+      navbar.style.transition = 'transform 1s ease';
+      lastScrolly = currentScrolly;
+    });
+  });
+</script>

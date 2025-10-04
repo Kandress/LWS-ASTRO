@@ -29,6 +29,7 @@
     border-radius: 20px;
     padding: 0.5rem 1.5rem;
     font-weight: bold;
+    text-decoration: none;
 }
 
 /* Navbar transparente para cloud computing */
@@ -39,7 +40,44 @@
     width: 100%;
     z-index: 1000;
 }
+/* Dropdown Menu */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      color: black;
+      background: white;
+      min-width: 160px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s;
+      pointer-events: none;
+      border-radius: 0.5rem;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .dropdown-content a {
+      color: #374151;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background: #f3f4f6;
+      border-radius: 0.5rem;
+    }
 
 .navbar ul {
     list-style: none;
@@ -54,7 +92,7 @@
 .navbar li {
     display: inline;
 }
-.navbar a {
+.navbar .links-nav {
     color: white;
     text-decoration: none;
     font-weight: 500;
@@ -63,9 +101,15 @@
     border-radius: 4px;
     transition: background 0.2s, color 0.2s;
 }
-.navbar a:hover {
+.navbar .links-nav:hover {
     background: rgba(0, 123, 255, 0.1);
     color: #007bff;
+}
+.navbar ion-icon {
+    color: white; /* Cambia el color de los iconos a blanco */
+    font-size: 1.5rem; /* Ajusta el tamaño de los iconos si es necesario */
+    vertical-align: middle; /* Alinea los iconos verticalmente con el texto */
+    cursor: pointer;
 }
 *{
     margin: 0;
@@ -79,13 +123,14 @@
     gap: 4rem;                /* aquí controlas la separación */
     min-height: 80vh;
     /* espacio para el navbar fijo */
+    padding-top: 0rem;
     background-color: black;
 }
 
 .container-text-modern{
     color: white;
     background-color: black;
-    width: 50%;
+    width: 55%;
     height: auto;
     padding: 6rem 4rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -98,6 +143,10 @@
     font-size: 1.2rem;
     margin-bottom: 2.5rem;
     line-height: 1.5;
+    font-style: italic;
+    color: gray;
+    border-left: 4px solid gray;
+    padding-left: 3rem;
 }
 .container-text-modern button{
     background: transparent;
@@ -108,9 +157,16 @@
     font-size: 1.5rem;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
 }
-
+.container-text-modern button:hover {
+    background: linear-gradient(90deg, #003366, #0056b3);
+    border-color: #003366;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 86, 179, 0.5);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
 .container-3d-modern{
     width: 45%;
     height: 70vh;
@@ -143,4 +199,106 @@
         width: 100%;
         height: 50vh;
     }
+}
+
+.container-3d-header iframe,
+.container-3d-header spline-viewer{
+    pointer-events: none;
+}
+.container-3d-modern iframe,
+.container-3d-modern spline-viewer{
+    pointer-events: none;
+}
+.container-buttons{
+    display: flex;
+    flex-direction: column; /* apilar y centrar por defecto */
+    align-items: center;
+    gap: 1.3rem;
+    margin-top: 2rem;
+}
+.container-buttons h3{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 100;
+    text-align: center; /* centra el contenido del h3 */
+    margin: 0;
+}
+.container-buttons h3 a{
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Suaviza la transición al quitar el cursor */
+}
+.container-buttons h3 a:hover {
+    color: #0056b3; /* Cambia el color del texto a un azul más vivo */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Suaviza la transición */
+    transition: all 0.3s ease;
+}
+
+/* En pantallas grandes podemos regresar a fila si se desea */
+@media (min-width: 900px) {
+    .container-buttons{
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start; /* ajusta según prefieras */
+    }
+    .container-buttons h3{
+        width: auto;
+        text-align: left;
+        margin-left: 0.5rem;
+    }
+}
+.title-section{
+    margin: 0  auto;
+    background-color: black;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    text-align: center; /* Asegura que el texto esté centrado */
+    padding:0; /* Añade espacio alrededor del contenido */
+    font-size: 25px;
+}
+.title-section .tittle-gradient {
+    background: linear-gradient(90deg, #d993db, #8e44ad);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.cover{
+    position: absolute;
+    left: 91.3%;
+    bottom: 40px;
+    z-index: 10;
+    background-color: black;
+    height: 40px;
+    width: 150px;
+}
+.cover2{
+    position: absolute;
+    left: 91.5%;
+    bottom: 150px;
+    z-index: 10;
+    background-color: black;
+    height: 40px;
+    width: 150px;
+}
+.cover3{
+    position: absolute;
+    left: 90%;
+     bottom: -900px;
+    z-index: 10;
+    background-color: black;
+    height: 80px;
+    width: 150px;
+
+}
+.dropdown-content a ion-icon[name="log-out-outline"] {
+    color: #ff4d4d; /* Cambia el color a un rojo suave para destacar */
+    font-size: 1.2rem; /* Ajusta el tamaño del icono */
+    vertical-align: middle; /* Alinea el icono con el texto */
+    margin-left: 0.5rem; /* Añade espacio entre el texto y el icono */
 }
