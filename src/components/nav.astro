@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../assets/images/LogoWhiteLWS.png";
+import "../styles/global.css";
+---
+
+<nav class="navbar">
+    <ul>
+        <li class="navbar-logo">
+            <a href="#home">
+                <Image src={Logo} alt="Logo White LWS" />
+            </a>
+        </li>
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#soluciones">Soluciones</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#seguridad">Seguridad</a></li>
+        <li><a href="#login" class="login-btn">Iniciar sesión</a></li>
+    </ul>
+</nav>
